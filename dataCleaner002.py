@@ -8,7 +8,6 @@ def find(text):
         return inmate_name
     return ""
     
-
 def cut(text):
     point = text.find("Employee Resources")
     if point != -1:
@@ -29,11 +28,6 @@ def extract_info(text):
         if "Inmate:" in line:
             inmate_name = line.split("Inmate:")[1].strip()
     inmate_name = slice(inmate_name)
-    
-
-    
-
-    
     return inmate_name, last_statement
 
 input_file = "last_statements.csv"
