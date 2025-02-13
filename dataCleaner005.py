@@ -1,96 +1,65 @@
 import csv
 import re
 
-
-CATEGORIES = [
-    "Name", "TDCJ Number", "Date of Birth", "Date Received", "Age (when Received)",
-    "Education Level", "Date of Offense", "Age (at the time of Offense)", "County",
-    "Race", "Gender", "Hair Color", "Height", "Weight", "Eye Color", "Native County",
-    "Native State", "Prior Occupation", "Prior Prison Record", "Summary of Incident",
-    "Co-Defendants", "Race and Gender of Victim"
-]
-
-def clean_text(text):
-    text = re.sub(r'[^\w\s.,:;/()-]', ' ', text)  
-    text = re.sub(r'\s+', ' ', text) 
-    return text.strip()
-
-def extract_html_data(text):
-    data = {category: "" for category in CATEGORIES}  
-
+def cut(text):
+    if text == "N/A":
+        return text
+    text = re.sub(r'\b(Summary of Incident|Co-Defendants|Race and Gender of Victim|Employee Resources)\b.*', '', text, flags=re.IGNORECASE)  # Remove trailing fields
+    text = re.sub(r'\s+', ' ', text).strip()  
+    return text
+def extract_inmate_info(text):
     patterns = {
-        "Name": r"Inmate Information\s*Name\s*([\w\s,]+)",
-        "TDCJ Number": r"TDCJ Number\s*([\d-]+)",
-        "Date of Birth": r"Date of Birth\s*([\d/]+)",
-        "Date Received": r"Date Received\s*([\d/]+)",
-        "Age (when Received)": r"Age \(when Received\)\s*(\d+)",
-        "Education Level": r"Education Level \(Highest Grade Completed\)\s*([\w\s\d]+)",
-        "Date of Offense": r"Date of Offense\s*([\d/]+)",
-        "Age (at the time of Offense)": r"Age \(at the time of Offense\)\s*(\d+)",
-        "County": r"County\s*([\w\s]+)",
-        "Race": r"Race\s*([\w\s]+)",
-        "Gender": r"Gender\s*([\w\s]+)",
-        "Hair Color": r"Hair Color\s*([\w\s]+)",
-        "Height": r"Height \(in Feet and Inches\)\s*([\d\'\"]+)",
-        "Weight": r"Weight \(in Pounds\)\s*([\d\s]+)",
-        "Eye Color": r"Eye Color\s*([\w\s]+)",
-        "Native County": r"Native County\s*([\w\s]+)",
-        "Native State": r"Native State\s*([\w\s]+)",
-        "Prior Occupation": r"Prior Occupation\s*([\w\s,]+)",
-        "Prior Prison Record": r"Prior Prison Record\s*([\w\s\d-]+)",
-        "Summary of Incident": r"Summary of Incident\s*([\w\s.,:;()-]+)",
-        "Co-Defendants": r"Co-Defendants\s*([\w\s,]+)",
-        "Race and Gender of Victim": r"Race and Gender of Victim\s*([\w\s/]+)"
+        "Name": r"Name\s+([A-Za-z]+,\s+[A-Za-z]+)",
+        "Date Received": r"Date Received\s+(\d{1,2}/\d{1,2}/\d{2,4})",
+        "Age when Received": r"Age \(when Received\)\s+(\d+)",
+        "Education Level": r"Education Level \(Highest Grade Completed\)\s+([\w\s]+)",
+        "Date of Offense": r"Date of Offense\s+(\d{1,2}/\d{1,2}/\d{2,4})",
+        "Age at the time of Offense": r"Age \(at the time of Offense\)\s+(\d+)",
+        "Prior Occupation": r"Prior Occupation\s+([\w\s]+)",
+        "Prior Prison Record": r"Prior Prison Record\s+([\w\s.,-]+)",
+        "Summary of Incident": r"Summary of Incident\s+([\w\s.,-]+)(.+?)(?=\s+(Co-Defendants|Race and Gender of Victim|Employee Resources|$))",
+        "Co-Defendants": r"Co-Defendants\s+([\w\s.,-]+)"
     }
-
-    for category, pattern in patterns.items():
-        match = re.search(pattern, text, re.IGNORECASE)
+    inmate_info = {}
+    for key, pattern in patterns.items():
+        match = re.search(pattern, text)
         if match:
-            data[category] = match.group(1).strip()
+            inmate_info[key] = cut(match.group(1))
+        else:
+            inmate_info[key] = "N/A"  
 
-    return data
+    return inmate_info
 
-def extract_plain_text_data(text):
-    data = {category: "" for category in CATEGORIES}  
-    lines = text.split("\n") 
-
-    for line in lines:
-        line = clean_text(line)  
-        for category in CATEGORIES:
-            if re.search(rf'\b{re.escape(category)}\b', line, re.IGNORECASE):
-                value = re.sub(rf'\b{re.escape(category)}\b', '', line, flags=re.IGNORECASE).strip()
-                data[category] = value
-                break  
-
-    return data
-
-def clean_and_write_csv(input_file, output_file):
-    with open(input_file, mode="r", encoding="utf-8") as infile, \
-         open(output_file, mode="w", newline="", encoding="utf-8") as outfile:
-        
+def process_csv(input_file, output_file):
+    with open(input_file, mode='r', encoding='utf-8') as infile, open(output_file, mode='w', encoding='utf-8', newline='') as outfile:
         reader = csv.reader(infile)
-        fieldnames = ["Execution Number"] + CATEGORIES  
-        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
-
-        writer.writeheader()  
-
+        writer = csv.writer(outfile)
+        header = ["Execution Number", "Name", "Date Received", "Age when Received", 
+                  "Education Level", "Date of Offense", "Age at the time of Offense", 
+                  "Prior Occupation", "Prior Prison Record", "Summary of Incident", "Co-Defendants"]
+        writer.writerow(header)
+       
         for row in reader:
-            execution_number = row[0] 
-            text = " ".join(row[1:])  
+            execution_number, info = row[0], row[1]
+            if info.startswith("Death Row Information"):
+                inmate_info = extract_inmate_info(info)
+                writer.writerow([
+                    execution_number,
+                    inmate_info["Name"],
+                    inmate_info["Date Received"],
+                    inmate_info["Age when Received"],
+                    inmate_info["Education Level"],
+                    inmate_info["Date of Offense"],
+                    inmate_info["Age at the time of Offense"],
+                    inmate_info["Prior Occupation"],
+                    inmate_info["Prior Prison Record"],
+                    inmate_info["Summary of Incident"],
+                    inmate_info["Co-Defendants"]
+                ])
 
-            if text.startswith("Death Row Information"):
-                structured_data = extract_html_data(text)
-            else:
-                structured_data = extract_plain_text_data(text)
 
-            structured_data["Execution Number"] = execution_number  
-
-           
-            writer.writerow(structured_data)
-
-
-input_file = "inmate_info.csv"
-output_file = "cleaned_inmate_info.csv"
-clean_and_write_csv(input_file, output_file)
-
-print(f"Cleaning complete. Structured data saved to {output_file}")
+if __name__ == "__main__":
+    input_csv = "inmate_info.csv"
+    output_csv = "HTML_clean_InmateInfo.csv"
+    process_csv(input_csv, output_csv)
+    print(f"Cleaned data saved to {output_csv}")
