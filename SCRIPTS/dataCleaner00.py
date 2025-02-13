@@ -33,5 +33,3 @@ for row in table.find_all("tr"):
 df = pd.DataFrame(data, columns=["Execution#", "Last Name", "First Name", "TDCJ Number", "Age", "Date", "Race", "County", "Profile Link"])
 df.to_csv("deathRow.csv", index=False)  
 print("CSV file saved: deathRow.csv")
-
-
