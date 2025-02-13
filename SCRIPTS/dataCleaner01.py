@@ -44,4 +44,8 @@ with open(output_file, mode="w", newline="", encoding="utf-8") as file:
         else:
             print(f"No text found for {link}\n")
 
+
 print(f"Scraping complete. Data saved to {output_file}")
+
+print(f"Scraping complete. Data saved to {output_file}")
+
