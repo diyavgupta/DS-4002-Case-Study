@@ -1,9 +1,9 @@
-# Texas Death Row Last Statements Analysis
+# DS Project: Texas Death Row Last Statements Analysis
+
+#### Authors: Connor Powell, Delaney Brown, Diya Gupta
 
 ## Overview  
-This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982.  
-
-Our dataset includes the last statements of death row inmates, scripts to clean the data and quantify remorse using sentiment analysis tools, and visualizations demonstrating early findings.  
+This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982. Our dataset includes the last statements of death row inmates, scripts to clean the data and quantify remorse using sentiment analysis tools, and visualizations demonstrating early findings.  
 
 Our project examines the amount of remorse expressed by Texas death row prisoners in their last words in relation to:  
 - The amount of time spent on death row  
@@ -28,8 +28,7 @@ Our project examines the amount of remorse expressed by Texas death row prisoner
 
 This repository contains the following files and directories:  
 
-### ** DATA** (CSV files containing raw and processed data)  
-- `HTML_clean_InmateInfo.csv`  
+### ** DATA** (CSV files containing raw and processed data)    
 - `cleaned_final_statements.csv` – Execution #, inmate name, final statement  
 - `Clean_Inmate_Info.csv` – Execution #, inmate name, dates of offense and incarceration, prior prison history, summary, etc.  
 - `deathRowInitial.csv` – Execution #, inmate name, TDCJ number, age, execution date, race, county, URL to inmate info  
@@ -49,6 +48,7 @@ This repository contains the following files and directories:
 ### ** OUTPUT**  
 - '    
 
+### **LICENSE** and **README**
 ---
 
 ##  Instructions for Reproducing Results  
