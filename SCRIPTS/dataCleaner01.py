@@ -29,7 +29,7 @@ def scrape_text_from_link(url):
         return None
 
 
-output_file = "last_statements.csv"
+output_file = "last_statement_links.csv"
 with open(output_file, mode="w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
     writer.writerow(["Link", "Text"])  
