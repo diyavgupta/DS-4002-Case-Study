@@ -1,3 +1,4 @@
+
 # DS Project: Texas Death Row Last Statements Analysis
 
 #### Authors: Connor Powell, Delaney Brown, Diya Gupta
@@ -61,4 +62,5 @@ To replicate our results, follow these steps:
 4. Run dataCleaner02, which inputs the last_statement_links.csv file, and cleans it outputting the data into cleaned_last_statements.csv
 5. Run dataCleaner03, which inputs deathRowInitial.csv, following the links and preceding to scrape them using configured Tesseract OCR for JPG images, as well as scraping all the info from the HTML versions outputting to inmate_infoInitial.csv.
 6. Run dataCleaner04, which inputs inmate_infoInitial.csv and cleans the data from the HTML outputs, placing the cleaned data in Clean_Inmate_info.csv
+
 
