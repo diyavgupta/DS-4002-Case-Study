@@ -16,7 +16,7 @@ Our project examines the amount of remorse expressed by Texas death row prisoner
 ##  Software and Platforms  
 
 - **Primary Software:** Python 3.11.4  
-- **Python Packages Used:**  
+- **Python Packages Used for cleaning, and required to replicate:**  
   `pandas`, `BeautifulSoup`, `os`, `requests`, `cv2`, `urllib3`, `numpy`, `tesseract/pytesseract`, `spellchecker`, `nltk`  
 - **Development Environment:**  
   - Linux  
