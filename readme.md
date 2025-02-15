@@ -36,7 +36,8 @@ This repository contains the following files and directories:
 - `deathRow.html` – HTML file from [TDCJ Death Row Executions](https://www.tdcj.texas.gov/death_row/dr_executed_offenders.html)  
 - `inmate_infoInitial.csv` – Scraped data from inmate info URLs, including Tesseract OCR output of JPG links  
 - `last_statement_links.csv` – URLs to last statements & scraped HTML outputs of inmates’ final words  
-- `negative-words.txt` – List of negative connotation words for sentiment analysis  
+- `negative-words.txt` – List of negative connotation words for sentiment analysis
+- `Data Appendix.pdf`  
 
 ### ** SCRIPTS** (Python scripts for scraping & cleaning)  
 - `dataCleaner00.py` – Scrapes & cleans `deathRow.html`, outputs `deathRowInitial.csv`  
@@ -46,8 +47,8 @@ This repository contains the following files and directories:
 - `dataCleaner04.py` – Cleans HTML outputs from `inmate_infoInitial.csv`, outputs `Clean_Inmate_Info.csv`  
 - `dataCleaner05.py` – *(In Progress)*  
 
-### ** OUTPUT**  
-- '    
+### ** OUTPUTS**  
+- 'wordcloud_last_statements.png' - Word cloud of last statements    
 
 ### **LICENSE** and **README**
 ---
