@@ -51,6 +51,8 @@ This repository contains the following files and directories:
 - 'wordcloud_last_statements.png' - Word cloud of last statements    
 
 ### **LICENSE** and **README**
+
+### requirements.txt file (for reproducibility)
 ---
 
 ##  Instructions for Reproducing Results  
