@@ -18,7 +18,7 @@ def combine_csv_files(file1, file2, file3, output_file):
     df2_selected = df2[['Execution Number', 'Date Received', 'Education Level', 'Date of Offense', 'Prior Occupation', 'Prior Prison Record', 'Summary of Incident']].copy()
     df3_selected = df3[['Execution Number', 'Inmate Name', 'Last Statement']].copy()
 
-    df1_selected.rename(columns={'Execution#': 'Execution Number'}, inplace=True)
+    df1_selected.rename(columns={'Execution#': 'Execution Number', 'Date': 'Date Executed'}, inplace=True)
     for df in [df1_selected, df2_selected, df3_selected]:
         df['Execution Number'] = df['Execution Number'].astype(str).str.strip()
     
