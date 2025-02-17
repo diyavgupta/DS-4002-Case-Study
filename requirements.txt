@@ -27,6 +27,14 @@ logging==0.5.1.2
 # Image processing
 Pillow==9.5.0
 
+# Data visualization and machine learning
+seaborn==0.12.2
+scikit-learn==1.2.2
+
+
+# Additional libraries for analysis
+vaderSentiment==3.3.2
+
 # NLTK stopwords
 downloads:
   - nltk: stopwords
