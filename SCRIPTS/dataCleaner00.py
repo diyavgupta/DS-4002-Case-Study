@@ -1,3 +1,8 @@
+## dataCleaner00.py Script
+## Required packages: bs4 (BeautifulSoup), pandas
+## Params: input_file (deathRow.html), output_file (deathRowInitial.csv)
+## Function: Parses an HTML table containing death row inmate data, extracts relevant fields (execution number, name, TDCJ number, age, date, race, county, profile link), and outputs the extracted data to a CSV file.
+
 from bs4 import BeautifulSoup
 import pandas as pd 
 
@@ -32,4 +37,4 @@ for row in table.find_all("tr"):
 
 df = pd.DataFrame(data, columns=["Execution#", "Last Name", "First Name", "TDCJ Number", "Age", "Date", "Race", "County", "Profile Link"])
 df.to_csv("deathRow.csv", index=False)  
-print("CSV file saved: deathRow.csv")
+print("CSV file saved: deathRowInitial.csv")

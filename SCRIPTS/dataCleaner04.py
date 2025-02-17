@@ -1,3 +1,8 @@
+## dataCleaner04.py Script
+## Required packages: csv, re
+## Params: input_csv (inmate_infoInitial.csv), output_csv (Clean_Inmate_info.csv)
+## Function: Reads an input CSV, cleans text data by removing non-ASCII characters, unwanted phrases, and extra spaces. Extracts specific inmate details such as Name, Date Received, Education Level, Date of Offense, Prior Occupation, Prior Prison Record, and Summary of Incident. Outputs a cleaned CSV with the specified fields.
+
 import csv
 import re
 

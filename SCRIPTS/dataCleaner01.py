@@ -1,3 +1,8 @@
+## dataCleaner01.py Script
+## Required packages: requests, bs4 (BeautifulSoup), csv
+## Params: input_file (deathRow.html), output_file (last_statement_links.csv)
+## Function: Parses an HTML file containing death row inmate data, extracts links to last statements, scrapes text from these links, and outputs the data to a CSV file.
+
 import requests
 from bs4 import BeautifulSoup
 import csv
