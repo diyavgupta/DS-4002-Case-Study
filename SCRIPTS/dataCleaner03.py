@@ -1,3 +1,7 @@
+## dataCleaner03.py Script
+## Required packages: cv2, numpy, pytesseract, requests, csv, os, PIL (Image), bs4 (BeautifulSoup), spellchecker, urllib3, logging, nltk
+## Params: filename (deathRowInitial.csv), output_file (inmate_infoInitial.csv), negative_words_file (negative-words.txt)
+## Function: Scrapes inmate data from provided URLs (HTML and JPG formats), preprocesses images for OCR, applies a custom spell checker, and outputs inmate information to a CSV file.
 
 import cv2
 import numpy as np
@@ -123,10 +127,10 @@ def sort(filename: str) -> list[str]:
     return urls
 
 def main():
-    filename = "deathRow.csv"
+    filename = "deathRowInitial.csv"
     info_links = sort(filename)
     execution_number = 592
-    output_file = "inmate_info.csv"
+    output_file = "inmate_infoInitial.csv"
     negataive_words_file = "negative-words.txt"
 
     # Create a custom spell checker

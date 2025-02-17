@@ -1,3 +1,8 @@
+## dataCleaner02.py Script
+## Required packages: csv, re
+## Params: input_file (last_statements.csv), output_file (cleaned_final_statements.csv)
+## Function: Reads a CSV file containing raw last statement data, extracts inmate names and last statements by removing unwanted text, and outputs a cleaned CSV file with execution numbers, inmate names, and their last statements.
+
 import csv
 import re
 
@@ -31,7 +36,7 @@ def extract_info(text):
     return inmate_name, last_statement
 
 input_file = "last_statements.csv"
-output_file = "cleaned_last_statements.csv"
+output_file = "cleaned_final_statements.csv"
 
 with open(input_file, mode="r", encoding="utf-8") as infile, open(output_file, mode="w", newline="", encoding="utf-8") as outfile:
     reader = csv.DictReader(infile)
