@@ -1,7 +1,7 @@
 
 # DS Project: Texas Death Row Last Statements Analysis
 
-#### Authors: Connor Powell, Delaney Brown, Diya Gupta
+#### Authors: Connor Powell, Delaney Brown, Diya Gupta (leader)
 
 ## Overview  
 This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982. Our dataset includes the last statements of death row inmates, scripts to clean the data and quantify remorse using sentiment analysis tools, and visualizations demonstrating early findings.  
@@ -37,7 +37,8 @@ This repository contains the following files and directories:
 - `inmate_infoInitial.csv` – Scraped data from inmate info URLs, including Tesseract OCR output of JPG links  
 - `last_statement_links.csv` – URLs to last statements & scraped HTML outputs of inmates’ final words  
 - `negative-words.txt` – List of negative connotation words for sentiment analysis
-- `Data Appendix.pdf`  
+- 'Combined_Data.csv' - Final cleaned dataset with sentiment analysis
+- `Data Appendix - Project 1.pdf`  
 
 ### ** SCRIPTS** (Python scripts for scraping & cleaning)  
 - `dataCleaner00.py` – Scrapes & cleans `deathRow.html`, outputs `deathRowInitial.csv`  
@@ -48,11 +49,17 @@ This repository contains the following files and directories:
 - `dataCleaner05.py` – *(In Progress)*  
 
 ### ** OUTPUTS**  
-- 'wordcloud_last_statements.png' - Word cloud of last statements    
+- 'crime_sentiment_analysis.csv' - Cleaned dataset used to produce 'crime_sentiment_clusters.png'
+- 'crime_sentiment_clusters.png' - Boxplot displaying sentiment scores by crime type
+- 'statement_analysis_results.csv' - Cleaned dataset used to produce 'time_sentiment_scatter.png' 
+- 'time_sentiment_scatter.png' - Scatterplot of sentiment scores over time
+- 'wordcloud_last_statements.png' - Word cloud of last statements
 
 ### **LICENSE** and **README**
 
-### requirements.txt file (for reproducibility)
+### 'requirements.txt' file (for reproducibility)
+
+### 'References - Project 1.pdf'
 ---
 
 ##  Instructions for Reproducing Results  
