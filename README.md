@@ -1,7 +1,7 @@
 
-# DS Project: Texas Death Row Last Statements Analysis
+# Case Study 3: Texas Death Row Last Statements Analysis
 
-#### Authors: Connor Powell, Delaney Brown, Diya Gupta (leader)
+#### Authors: Diya Gupta
 
 ## Overview  
 This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982. Our dataset includes the last statements of death row inmates, scripts to clean the data and quantify remorse using sentiment analysis tools, and visualizations demonstrating early findings.  
@@ -59,14 +59,15 @@ This repository contains the following files and directories:
 
 ### 'requirements.txt' file (for reproducibility)
 
-### 'References - Project 1.pdf'
+### ** REFERENCES **
+- 'References - Project 1 (1).pdf'
 ---
 
 ##  Instructions for Reproducing Results  
 
 To replicate our results, follow these steps:  
 
-1. To reproduce the results of our project, start by cloning the repository and downloading the requirements.txt file to ensure all the proper packages are available.
+1. To reproduce the results of this project, start by cloning the repository and downloading the requirements.txt file to ensure all the proper packages are available.
 2. Run dataCleaner00, which inputs the HTML script from the TDJC website and scrapes the data into the output deathRowInitial.csv.
 3. Run dataCleaner01, which inputs the HTML script from TDJC and follows and scrapes the last statement link for each input outputting them into last_statement_links.csv
 4. Run dataCleaner02, which inputs the last_statement_links.csv file, and cleans it outputting the data into cleaned_last_statements.csv
