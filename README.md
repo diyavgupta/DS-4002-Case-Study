@@ -4,9 +4,9 @@
 #### Authors: Diya Gupta
 
 ## Overview  
-This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982. Our dataset includes the last statements of death row inmates, scripts to clean the data and quantify remorse using sentiment analysis tools, and visualizations demonstrating early findings.  
+This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982. This dataset includes the last statements of death row inmates and scripts to clean the data and quantify remorse using sentiment analysis tools. Your task is to produce visualizations demonstrating early findings.  
 
-Our project examines the amount of remorse expressed by Texas death row prisoners in their last words in relation to:  
+This project examines the amount of remorse expressed by Texas death row prisoners in their last words in relation to:  
 - The amount of time spent on death row  
 - The year of execution (before or after increased sentencing restrictions)  
 - The type of crime committed  
@@ -40,7 +40,8 @@ This repository contains the following files and directories:
 - 'Combined_Data.csv' - Final cleaned dataset with sentiment analysis
 - `Data Appendix - Project 1.pdf`  
 
-### ** SCRIPTS** (Python scripts for scraping & cleaning)  
+### ** SCRIPTS** (Python scripts for scraping & cleaning)
+- 'requirements.txt' - contains all necessary packages for reproducibility
 - `dataCleaner00.py` – Scrapes & cleans `deathRow.html`, outputs `deathRowInitial.csv`  
 - `dataCleaner01.py` – Scrapes last statement links from `deathRow.html`, outputs `last_statement_links.csv`  
 - `dataCleaner02.py` – Cleans `last_statement_links.csv`, outputs `cleaned_final_statements.csv`  
@@ -56,8 +57,6 @@ This repository contains the following files and directories:
 - 'wordcloud_last_statements.png' - Word cloud of last statements
 
 ### **LICENSE** and **README**
-
-### 'requirements.txt' file (for reproducibility)
 
 ### ** REFERENCES **
 - 'References - Project 1 (1).pdf'
