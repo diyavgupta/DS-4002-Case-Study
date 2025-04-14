@@ -1,7 +1,7 @@
 
 # Case Study 3: Texas Death Row Last Statements Analysis
 
-#### Authors: Diya Gupta
+#### Author: Diya Gupta
 
 ## Overview  
 This repository contains CSV data files generated using Python scripts to scrape and clean data from the Texas Department of Criminal Justice website, specifically the Death Row Information of all 592 inmates arrested in Texas since 1982. This dataset includes the last statements of death row inmates and scripts to clean the data and quantify remorse using sentiment analysis tools. Your task is to produce visualizations demonstrating early findings.  
@@ -49,7 +49,7 @@ This repository contains the following files and directories:
 - `dataCleaner04.py` – Cleans HTML outputs from `inmate_infoInitial.csv`, outputs `Clean_Inmate_Info.csv`  
 - `dataCleaner05.py` – *(In Progress)*  
 
-### ** OUTPUTS**  
+### ** OUTPUTS - This is where you will produce your outputs, the following outputs can be used as examples **  
 - 'crime_sentiment_analysis.csv' - Cleaned dataset used to produce 'crime_sentiment_clusters.png'
 - 'crime_sentiment_clusters.png' - Boxplot displaying sentiment scores by crime type
 - 'statement_analysis_results.csv' - Cleaned dataset used to produce 'time_sentiment_scatter.png' 
